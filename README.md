@@ -94,4 +94,4 @@ Shakhawat Hossain
 
 ## 📄 License
 
-MIT
+MIT © Shakhawat Hossain
