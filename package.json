@@ -3,7 +3,7 @@
   "version": "1.0.4",
   "main": "src/index.js",
   "bin": {
-    "env-guard": "bin/cli.js"
+    "env-guarder": "./bin/cli.js"
   },
   "type": "module",
   "dependencies": {
