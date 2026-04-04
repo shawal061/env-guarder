@@ -3,10 +3,18 @@
   "version": "1.0.0",
   "main": "src/index.js",
   "bin": {
-    "env-guard": "./bin/cli.js"
+    "env-guard": "bin/cli.js"
   },
   "type": "module",
   "dependencies": {
     "dotenv": "^17.4.0"
-  }
+  },
+  "description": "Simple environment variable validator",
+  "keywords": [
+    "env",
+    "validator",
+    "node"
+  ],
+  "author": "Shakhawat Hossain",
+  "license": "MIT"
 }
