@@ -1,5 +1,5 @@
 {
-  "name": "env-guard",
+  "name": "env-guarder",
   "version": "1.0.4",
   "main": "src/index.js",
   "bin": {
