@@ -11,11 +11,18 @@
     "dotenv": "^17.4.0"
   },
   "description": "Simple environment variable validator",
+  "author": "Shakhawat Hossain",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/shawal061/env-guarder"
+  },
   "keywords": [
     "env",
+    "environment",
     "validator",
-    "node"
-  ],
-  "author": "Shakhawat Hossain",
-  "license": "MIT"
+    "dotenv",
+    "nodejs",
+    "cli"
+  ]
 }
