@@ -1,6 +1,6 @@
 {
   "name": "env-guard",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "main": "src/index.js",
   "bin": {
     "env-guard": "bin/cli.js"
