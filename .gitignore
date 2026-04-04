@@ -1,0 +1,29 @@
+# --- OS Files ---
+.DS_Store
+Thumbs.db
+*.swp
+
+# --- Environment & Secrets ---
+.env
+.env.local
+*.log
+
+# --- Common IDEs ---
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# --- Common Build/Dependency Folders ---
+node_modules/
+dist/
+build/
+bin/
+obj/
+out/
+
+# --- Temporary Files ---
+tmp/
+temp/
+*.tmp
+*.bak
