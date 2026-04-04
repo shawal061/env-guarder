@@ -24,5 +24,12 @@
     "dotenv",
     "nodejs",
     "cli"
-  ]
+  ],
+  "files": [
+    "bin",
+    "src"
+  ],
+  "engines": {
+    "node": ">=18"
+  }
 }

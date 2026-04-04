@@ -4,7 +4,7 @@ import chalk from "chalk";
 
 dotenv.config();
 
-const requiredVars = process.argv.slice(2);
+const requiredVars = process.argv.slice(2).filter(v => /^[A-Z0-9_]+$/.test(v));
 
 if (requiredVars.length === 0) {
     console.log(chalk.yellow("⚠️  Please provide env variables to check"));

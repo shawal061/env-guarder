@@ -5,7 +5,7 @@ export function validateEnv(schema) {
     for (const key in schema) {
         const value = process.env[key];
 
-        if (!value) {
+        if (value === undefined || value === "") {
             if (schema[key]?.required) {
                 errors.push(key);
             } else {
