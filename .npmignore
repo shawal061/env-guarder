@@ -1,5 +1,10 @@
-src/
 .git
 .github
 .vscode
 *.log
+.env
+.env.*
+!src/
+src/**/*.test.js
+package-lock.json
+improvement_plan.md

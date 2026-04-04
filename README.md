@@ -1,16 +1,19 @@
-# env-guarder
+# env-guarder 🛡️
 
-A minimal, secure, and efficient environment variable validator for Node.js.
+[![npm version](https://img.shields.io/npm/v/env-guarder.svg)](https://www.npmjs.com/package/env-guarder)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+A robust, lightweight, and type-safe environment variable validator for Node.js. Ensure your application has all the required configuration before it even starts.
 
 ## 🚀 Features
 
-* Validate required environment variables with optional types (`string`, `number`, `boolean`)
-* Provide default values
-* Clean CLI for quick checks
-* Optional dotenv support
-* Input sanitization to prevent injection or unsafe characters
-* Minimal dependencies for lightweight performance
-* Fail-safe process exit on missing variables
+* **Type Validation**: Support for `string`, `number`, and `boolean`.
+* **Auto-Casting**: Automatically converts "3000" to `3000` (Number) or "true" to `true` (Boolean).
+* **Default Values**: Provide sensible defaults for optional variables.
+* **Custom Validation**: Add your own logic with validation functions.
+* **TypeScript Support**: Full type definitions included.
+* **Powerful CLI**: Quickly check environment variables from your terminal.
+* **Minimal Dependencies**: Only uses `chalk` and `dotenv`.
 
 ---
 
@@ -24,48 +27,82 @@ npm install env-guarder
 
 ## ⚡ Usage (CLI)
 
-Check environment variables directly from terminal:
+Check if required environment variables are set in your `.env` file directly from the terminal.
 
 ```bash
-npx env-guarder PORT DB_URL --dotenv
+# Basic usage
+npx env-guarder PORT DB_URL
+
+# Specify a custom .env file
+npx env-guarder PORT DB_URL --env-file .env.production
+
+# Show help
+npx env-guarder --help
 ```
 
-### ✅ Example Output
+### ✅ Output Example
 
 ```bash
 ✅ All required env variables are set!
 ```
 
-### ❌ Missing Variables
-
-```bash
-❌ Missing environment variables:
- - DB_URL
-```
-
-### CLI Notes
-
-* The `--dotenv` flag loads `.env` automatically
-* Only valid variable names (A-Z, 0-9, _) are processed
-
 ---
 
 ## 🧠 Usage (Code)
 
-```js
+### Basic Validation
+
+```javascript
 import { validateEnv } from "env-guarder";
 
 const env = validateEnv({
-  PORT: { required: true, type: "number" },
+  PORT: { required: true, type: "number", default: 3000 },
   DB_URL: { required: true },
-  NODE_ENV: { default: "development" }
-}, { sanitize: true });
+  DEBUG: { type: "boolean", default: false }
+});
 
-console.log(env.PORT);
+console.log(env.PORT); // 3000 (Number)
+console.log(env.DEBUG); // false (Boolean)
 ```
 
-* The second argument `{ sanitize: true }` ensures safe, clean values
-* Types are automatically validated and converted
+### Custom Validation
+
+```javascript
+const env = validateEnv({
+  API_KEY: {
+    required: true,
+    validate: (val) => val.length >= 32 || "API_KEY must be at least 32 characters long"
+  }
+});
+```
+
+### Options
+
+| Option | Type | Default | Description |
+| --- | --- | --- | --- |
+| `exitOnError` | `boolean` | `true` | If true, calls `process.exit(1)` on validation failure. If false, throws an `Error`. |
+
+---
+
+## 📘 TypeScript
+
+`env-guarder` comes with built-in type definitions.
+
+```typescript
+import { validateEnv } from "env-guarder";
+
+interface Config {
+  PORT: number;
+  DB_URL: string;
+}
+
+const config = validateEnv<Config>({
+  PORT: { required: true, type: "number" },
+  DB_URL: { required: true }
+});
+
+// config.PORT is correctly typed as number
+```
 
 ---
 
@@ -73,62 +110,28 @@ console.log(env.PORT);
 
 ```env
 PORT=3000
-DB_URL=mongodb://localhost:27017/app
+DB_URL=postgres://localhost:5432/mydb
 ```
-
----
-
-## ⚠️ Security & Notes
-
-* Missing required variables stop the process safely with exit code 1
-* Defaults are used when values are not provided
-* Optional dotenv support loads `.env` securely
-* CLI and library sanitize inputs to prevent unsafe characters or injection
-* Minimal dependencies reduce attack surface and keep package lightweight
-* Avoid committing secrets in `.env` files to public repos
-
----
-
-## 🔧 Recommended Implementation Updates
-
-1. `src/index.js`
-
-   * Optional sanitization for safe usage
-   * Type validation (`number`, `boolean`, `string`)
-   * Fail-safe exits for missing variables
-
-2. `bin/cli.js`
-
-   * Sanitize command-line inputs
-   * Optional `--dotenv` flag
-   * Fail-safe exits for missing variables
-
-3. `.gitignore`
-
-   * Ignore `.env` and sensitive files
-
-4. `.npmignore`
-
-   * Exclude `.env`, node_modules, tests, and config files not needed for runtime
 
 ---
 
 ## 🛠 Roadmap
 
-* Auto `.env.example` generator
-* Config file support (`env-guarder.config.js`)
-* TypeScript types for better IDE support
-* Optional stricter type validation and regex patterns
-* Enhanced CLI formatting with colors
+* [ ] Auto `.env.example` generator
+* [ ] Config file support (`env-guarder.config.js`)
+* [ ] Glob patterns for variable names
+* [ ] Support for array types
 
 ---
 
 ## 👤 Author
 
-Shakhawat Hossain
+**Shakhawat Hossain**
+* GitHub: [@shawal061](https://github.com/shawal061)
 
 ---
 
 ## 📄 License
 
-MIT
+MIT © [Shakhawat Hossain](LICENSE)
+

@@ -6,6 +6,9 @@
     "env-guarder": "./bin/cli.js"
   },
   "type": "module",
+  "scripts": {
+    "test": "vitest run"
+  },
   "dependencies": {
     "chalk": "^5.6.2",
     "dotenv": "^17.4.0"
@@ -31,5 +34,8 @@
   ],
   "engines": {
     "node": ">=18"
+  },
+  "devDependencies": {
+    "vitest": "^4.1.2"
   }
 }
