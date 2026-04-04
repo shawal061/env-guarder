@@ -6,17 +6,17 @@ export function validateEnv(schema) {
         const value = process.env[key];
 
         if (!value) {
-            if (schema[key].required) {
+            if (schema[key]?.required) {
                 errors.push(key);
             } else {
-                result[key] = schema[key].default;
+                result[key] = schema[key]?.default;
             }
         } else {
             result[key] = value;
         }
     }
 
-    if (errors.length > 0) {
+    if (errors.length) {
         console.error("❌ Missing environment variables:");
         errors.forEach(e => console.error(` - ${e}`));
         process.exit(1);
