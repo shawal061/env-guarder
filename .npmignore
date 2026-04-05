@@ -5,6 +5,10 @@
 .env
 .env.*
 !src/
-src/**/*.test.js
 package-lock.json
-improvement_plan.md
+tests/
+eslint.config.js
+
+CODE_OF_CONDUCT.md
+SECURITY.md
+vitest.config.js
