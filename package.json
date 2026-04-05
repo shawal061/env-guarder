@@ -7,15 +7,21 @@
   },
   "type": "module",
   "scripts": {
-    "test": "vitest run"
+    "test": "vitest run",
+    "prepublishOnly": "npm test"
   },
   "dependencies": {
     "chalk": "^5.6.2",
     "dotenv": "^17.4.0"
   },
   "description": "Validate and check required Node.js environment variables safely and efficiently",
-  "author": "Shakhawat Hossain",
+  "author": "Shakhawat Hossain <contact.shakhawat.hossain@gmail.com>",
   "license": "MIT",
+  "sideEffects": false,
+  "funding": {
+    "type": "individual",
+    "url": "https://github.com/sponsors/shawal061"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/shawal061/env-guarder"
@@ -36,6 +42,9 @@
     "node": ">=18"
   },
   "devDependencies": {
+    "eslint": "^9.39.4",
+    "eslint-plugin-import": "^2.32.0",
+    "eslint-plugin-node": "^11.1.0",
     "vitest": "^4.1.2"
   }
 }
